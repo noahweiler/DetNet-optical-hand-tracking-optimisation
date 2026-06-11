@@ -64,47 +64,65 @@ class detnet(nn.Module):
         self.resnet50 = resnet50()
 
         self.hmap_0 = net_2d(258, 256, 1)
-        self.dmap_0 = net_3d(279, 256, 1)
-        self.lmap_0 = net_3d(342, 256, 1)
+        # Only doing 2D analysis — dmap/lmap 3D heads below are not needed.
+        # self.dmap_0 = net_3d(279, 256, 1)
+        # self.lmap_0 = net_3d(342, 256, 1)
         self.stacks = stacks
 
     def forward(self, x):
+        # ── Feature Extractor (ResNet50) ─────────────────────────────────────
         features = self.resnet50(x)
 
         device = x.device
         pos_tile = get_pose_tile_torch(features.shape[0]).to(device)
 
         x = torch.cat([features, pos_tile], dim=1)
+        # ── End Feature Extractor ─────────────────────────────────────────────
 
         hmaps = []
-        dmaps = []
-        lmaps = []
+        # Only doing 2D analysis — dmap/lmap accumulators not needed.
+        # dmaps = []
+        # lmaps = []
 
         for _ in range(self.stacks):
+            # ── 2D Detector (Heat Maps H) ─────────────────────────────────────
             heat_map = self.hmap_0(x)
             hmaps.append(heat_map)
-            x = torch.cat([x, heat_map], dim=1)
+            # 2D-only: heat_map is no longer fed into the 3D heads, so this
+            # concat is redundant.
+            # x = torch.cat([x, heat_map], dim=1)
+            # ── End 2D Detector ───────────────────────────────────────────────
 
-            dmap = self.dmap_0(x)
-            dmaps.append(dmap)
+            # ── Only doing 2D analysis — 3D detector heads below not needed ───
+            # ── 3D Detector: Delta Maps D ─────────────────────────────────────
+            # dmap = self.dmap_0(x)
+            # dmaps.append(dmap)
+            #
+            # x = torch.cat([x, rearrange(dmap, 'b j l h w -> b (j l) h w')], dim=1)
+            # ── End Delta Maps ────────────────────────────────────────────────
 
-            x = torch.cat([x, rearrange(dmap, 'b j l h w -> b (j l) h w')], dim=1)
+            # ── 3D Detector: Location Maps L ──────────────────────────────────
+            # lmap = self.lmap_0(x)
+            # lmaps.append(lmap)
+            # ── End Location Maps ─────────────────────────────────────────────
 
-            lmap = self.lmap_0(x)
-            lmaps.append(lmap)
-        hmap, dmap, lmap = hmaps[-1], dmaps[-1], lmaps[-1]
+        hmap = hmaps[-1]
+        # hmap, dmap, lmap = hmaps[-1], dmaps[-1], lmaps[-1]
 
+        # ── Joint Locations X (argmax + delta/xyz readout) ────────────────────
         uv, argmax = self.map_to_uv(hmap)
 
-        delta = self.dmap_to_delta(dmap, argmax)
-        xyz = self.lmap_to_xyz(lmap, argmax)
+        # Only doing 2D analysis — delta/xyz readout from 3D heads not needed.
+        # delta = self.dmap_to_delta(dmap, argmax)
+        # xyz = self.lmap_to_xyz(lmap, argmax)
+        # ── End Joint Locations ───────────────────────────────────────────────
 
         det_result = {
             "h_map": hmap,
-            "d_map": dmap,
-            "l_map": lmap,
-            "delta": delta,
-            "xyz": xyz,
+            # "d_map": dmap,
+            # "l_map": lmap,
+            # "delta": delta,
+            # "xyz": xyz,
             "uv": uv
         }
 
@@ -123,7 +141,7 @@ class detnet(nn.Module):
         v = argmax % w
         uv = torch.cat([u, v], dim=-1)
 
-        return uv, argmax
+        return uv, argmax                   #uv are the coordinates of each joint from the heatmap space which is 32x32 so we need to convert this back to the image size which is 128x128
 
     @staticmethod
     def dmap_to_delta(dmap, argmax):
@@ -143,15 +161,16 @@ if __name__ == '__main__':
     res = mydet(img_crop)
 
     hmap = res["h_map"]
-    dmap = res["d_map"]
-    lmap = res["l_map"]
-    delta = res["delta"]
-    xyz = res["xyz"]
+    # Only doing 2D analysis — d_map/l_map/delta/xyz are not produced.
+    # dmap = res["d_map"]
+    # lmap = res["l_map"]
+    # delta = res["delta"]
+    # xyz = res["xyz"]
     uv = res["uv"]
 
     print("hmap.shape=", hmap.shape)
-    print("dmap.shape=", dmap.shape)
-    print("lmap.shape=", lmap.shape)
-    print("delta.shape=", delta.shape)
-    print("xyz.shape=", xyz.shape)
+    # print("dmap.shape=", dmap.shape)
+    # print("lmap.shape=", lmap.shape)
+    # print("delta.shape=", delta.shape)
+    # print("xyz.shape=", xyz.shape)
     print("uv.shape=", uv.shape)

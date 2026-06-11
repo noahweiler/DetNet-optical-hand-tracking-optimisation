@@ -1,0 +1,35 @@
+{
+  "method": "Method 3 (full INT8, Histogram-MSE)",
+  "tag": "method3",
+  "size_mb": 11.376825332641602,
+  "latency_ms": 21.866785559492808,
+  "latency_std_ms": 2.2926547781475928,
+  "latency_batch_size": 1,
+  "num_threads": 8,
+  "speedup_vs_fp32": 3.3249937202834916,
+  "n_bias_corrected": 44,
+  "max_samples": 1980,
+  "metrics": {
+    "freihand_eval": {
+      "n_frames": 1980,
+      "mpjpe": 0.04674786479598043,
+      "auc_pck": 95.44789161455827,
+      "pck20": 89.6897546897547,
+      "pck50": 98.36700336700336
+    },
+    "freihand_train": {
+      "n_frames": 1980,
+      "mpjpe": 0.0453160210371469,
+      "auc_pck": 96.37938912938914,
+      "pck20": 90.67821067821068,
+      "pck50": 98.86243386243386
+    },
+    "freihand_all": {
+      "n_frames": 3960,
+      "mpjpe": 0.046031942916563665,
+      "auc_pck": 95.91364037197371,
+      "pck20": 90.18398268398269,
+      "pck50": 98.61471861471861
+    }
+  }
+}

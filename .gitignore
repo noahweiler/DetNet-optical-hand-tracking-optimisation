@@ -1,0 +1,74 @@
+# Comments must start the line — gitignore does NOT support trailing comments.
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Claude Code state — do not publish
+.claude/
+
+# Env / secrets
+.env
+.env.*
+venv/
+env/
+.conda/
+
+# Model weights / checkpoints — too large and / or non-redistributable
+*.pth
+*.pt
+*.onnx
+*.tflite
+
+# MediaPipe hand_landmarker bundle (auto-downloaded by code)
+*.task
+
+# Pruning / fine-tune artifact trees
+checkpoints_finetuned/
+new_check_point/
+pruned_architectures/
+
+# Dataset caches — FreiHAND and RHD are research-license-only, do not redistribute
+datasets/data/
+datasets/*.pkl
+Old_training/datasets/data/
+.cache/
+
+# Calibration / quant intermediates (regenerable by re-running method2.py / method3.py)
+quant/calib_tensors.pt
+
+# Heavy per-frame eval arrays — keep summary.json, drop errors.npz
+*.npz
+
+# Legacy + backup eval result trees
+eval_results/
+eval_results_cpu_backup_imgnorm/
+
+# BBT webcam recordings — privacy and size
+BBT recordings/
+*.mp4
+*.avi
+*.mov
+
+# CSV recordings of game / inference (large, regenerable)
+results.csv
+*.log
+
+# Benchmark sweep outputs (regenerable from the scripts)
+benchmark_results/
+
+# Temp files
+tmp_*
+*.tmp
+*.bak

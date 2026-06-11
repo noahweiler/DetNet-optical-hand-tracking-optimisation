@@ -1,0 +1,35 @@
+{
+  "method": "Method 2 (full INT8, MinMax)",
+  "tag": "method2",
+  "size_mb": 11.376825332641602,
+  "latency_ms": 22.3468522194566,
+  "latency_std_ms": 2.229877786004384,
+  "latency_batch_size": 1,
+  "num_threads": 8,
+  "speedup_vs_fp32": 3.253564482106165,
+  "n_bias_corrected": 44,
+  "max_samples": 1980,
+  "metrics": {
+    "freihand_eval": {
+      "n_frames": 1980,
+      "mpjpe": 0.057360222078201295,
+      "auc_pck": 91.96608946608947,
+      "pck20": 82.96296296296296,
+      "pck50": 97.05627705627705
+    },
+    "freihand_train": {
+      "n_frames": 1980,
+      "mpjpe": 0.05324434695407899,
+      "auc_pck": 93.7140452140452,
+      "pck20": 86.1038961038961,
+      "pck50": 97.60942760942761
+    },
+    "freihand_all": {
+      "n_frames": 3960,
+      "mpjpe": 0.055302284516140145,
+      "auc_pck": 92.84006734006734,
+      "pck20": 84.53342953342954,
+      "pck50": 97.33285233285234
+    }
+  }
+}

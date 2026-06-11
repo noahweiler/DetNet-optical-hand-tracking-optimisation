@@ -1,3 +1,8 @@
+# NOTE (Windows): Pillow must be imported before torchvision. torchvision's
+# CUDA wheel bundles its own zlib/libjpeg/libpng DLLs; if those load first,
+# Pillow's _imaging.pyd fails with "DLL load failed ... cannot run %1".
+# Importing PIL first makes Pillow load its (compatible) codecs first.
+import PIL.Image  # noqa: F401  (import-for-side-effect; keep above torchvision)
 from torchvision.transforms.functional import *
 
 

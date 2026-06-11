@@ -1,0 +1,450 @@
+DetNet pruning dependency groups (32 groups; hmap_0.prediction excluded)
+==================================================================================================================================
+
+############  GROUP 0  (root: hmap_0.project.0, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on hmap_0.project.0 (Conv2d(258, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on hmap_0.project.0 (Conv2d(258, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on hmap_0.project.0 (Conv2d(258, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on hmap_0.project.1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on hmap_0.project.1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_1(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_1(ReluBackward0) => prune_in_channels on hmap_0.prediction (Conv2d(256, 21, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 1  (root: resnet50.squeeze.0, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.squeeze.0 (Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.squeeze.0 (Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.squeeze.0 (Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.squeeze.1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.squeeze.1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_3(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_3(ReluBackward0) => prune_out_channels on _ConcatOp_2(None), len(idxs)=256
+[4] prune_out_channels on _ConcatOp_2(None) => prune_in_channels on hmap_0.project.0 (Conv2d(258, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 2  (root: resnet50.block3.0.shortcut.0, channels: 1024)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.0.shortcut.0 (Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.0.shortcut.0 (Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[1] prune_out_channels on resnet50.block3.0.shortcut.0 (Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.0.shortcut.1 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[2] prune_out_channels on resnet50.block3.0.shortcut.1 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_15(AddBackward0), len(idxs)=1024
+[3] prune_out_channels on _ElementWiseOp_15(AddBackward0) => prune_out_channels on resnet50.block3.0.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[4] prune_out_channels on _ElementWiseOp_15(AddBackward0) => prune_out_channels on _ElementWiseOp_14(ReluBackward0), len(idxs)=1024
+[5] prune_out_channels on _ElementWiseOp_14(ReluBackward0) => prune_out_channels on _ElementWiseOp_13(AddBackward0), len(idxs)=1024
+[6] prune_out_channels on _ElementWiseOp_14(ReluBackward0) => prune_in_channels on resnet50.block3.1.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[7] prune_out_channels on _ElementWiseOp_13(AddBackward0) => prune_out_channels on resnet50.block3.1.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[8] prune_out_channels on _ElementWiseOp_13(AddBackward0) => prune_out_channels on _ElementWiseOp_12(ReluBackward0), len(idxs)=1024
+[9] prune_out_channels on _ElementWiseOp_12(ReluBackward0) => prune_out_channels on _ElementWiseOp_11(AddBackward0), len(idxs)=1024
+[10] prune_out_channels on _ElementWiseOp_12(ReluBackward0) => prune_in_channels on resnet50.block3.2.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[11] prune_out_channels on _ElementWiseOp_11(AddBackward0) => prune_out_channels on resnet50.block3.2.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[12] prune_out_channels on _ElementWiseOp_11(AddBackward0) => prune_out_channels on _ElementWiseOp_10(ReluBackward0), len(idxs)=1024
+[13] prune_out_channels on _ElementWiseOp_10(ReluBackward0) => prune_out_channels on _ElementWiseOp_9(AddBackward0), len(idxs)=1024
+[14] prune_out_channels on _ElementWiseOp_10(ReluBackward0) => prune_in_channels on resnet50.block3.3.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[15] prune_out_channels on _ElementWiseOp_9(AddBackward0) => prune_out_channels on resnet50.block3.3.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[16] prune_out_channels on _ElementWiseOp_9(AddBackward0) => prune_out_channels on _ElementWiseOp_8(ReluBackward0), len(idxs)=1024
+[17] prune_out_channels on _ElementWiseOp_8(ReluBackward0) => prune_out_channels on _ElementWiseOp_7(AddBackward0), len(idxs)=1024
+[18] prune_out_channels on _ElementWiseOp_8(ReluBackward0) => prune_in_channels on resnet50.block3.4.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[19] prune_out_channels on _ElementWiseOp_7(AddBackward0) => prune_out_channels on resnet50.block3.4.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[20] prune_out_channels on _ElementWiseOp_7(AddBackward0) => prune_out_channels on _ElementWiseOp_6(ReluBackward0), len(idxs)=1024
+[21] prune_out_channels on _ElementWiseOp_6(ReluBackward0) => prune_out_channels on _ElementWiseOp_5(AddBackward0), len(idxs)=1024
+[22] prune_out_channels on _ElementWiseOp_6(ReluBackward0) => prune_in_channels on resnet50.block3.5.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[23] prune_out_channels on _ElementWiseOp_5(AddBackward0) => prune_out_channels on resnet50.block3.5.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=1024
+[24] prune_out_channels on _ElementWiseOp_5(AddBackward0) => prune_out_channels on _ElementWiseOp_4(ReluBackward0), len(idxs)=1024
+[25] prune_out_channels on _ElementWiseOp_4(ReluBackward0) => prune_in_channels on resnet50.squeeze.0 (Conv2d(1024, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=1024
+[26] prune_out_channels on resnet50.block3.5.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block3.5.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[27] prune_out_channels on resnet50.block3.4.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block3.4.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[28] prune_out_channels on resnet50.block3.3.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block3.3.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[29] prune_out_channels on resnet50.block3.2.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block3.2.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[30] prune_out_channels on resnet50.block3.1.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block3.1.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+[31] prune_out_channels on resnet50.block3.0.bn3 (BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block3.0.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=1024
+--------------------------------
+
+
+############  GROUP 3  (root: resnet50.block2.0.shortcut.0, channels: 512)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.0.shortcut.0 (Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.0.shortcut.0 (Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[1] prune_out_channels on resnet50.block2.0.shortcut.0 (Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.0.shortcut.1 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=512
+[2] prune_out_channels on resnet50.block2.0.shortcut.1 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_23(AddBackward0), len(idxs)=512
+[3] prune_out_channels on _ElementWiseOp_23(AddBackward0) => prune_out_channels on resnet50.block2.0.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=512
+[4] prune_out_channels on _ElementWiseOp_23(AddBackward0) => prune_out_channels on _ElementWiseOp_22(ReluBackward0), len(idxs)=512
+[5] prune_out_channels on _ElementWiseOp_22(ReluBackward0) => prune_out_channels on _ElementWiseOp_21(AddBackward0), len(idxs)=512
+[6] prune_out_channels on _ElementWiseOp_22(ReluBackward0) => prune_in_channels on resnet50.block2.1.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[7] prune_out_channels on _ElementWiseOp_21(AddBackward0) => prune_out_channels on resnet50.block2.1.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=512
+[8] prune_out_channels on _ElementWiseOp_21(AddBackward0) => prune_out_channels on _ElementWiseOp_20(ReluBackward0), len(idxs)=512
+[9] prune_out_channels on _ElementWiseOp_20(ReluBackward0) => prune_out_channels on _ElementWiseOp_19(AddBackward0), len(idxs)=512
+[10] prune_out_channels on _ElementWiseOp_20(ReluBackward0) => prune_in_channels on resnet50.block2.2.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[11] prune_out_channels on _ElementWiseOp_19(AddBackward0) => prune_out_channels on resnet50.block2.2.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=512
+[12] prune_out_channels on _ElementWiseOp_19(AddBackward0) => prune_out_channels on _ElementWiseOp_18(ReluBackward0), len(idxs)=512
+[13] prune_out_channels on _ElementWiseOp_18(ReluBackward0) => prune_out_channels on _ElementWiseOp_17(AddBackward0), len(idxs)=512
+[14] prune_out_channels on _ElementWiseOp_18(ReluBackward0) => prune_in_channels on resnet50.block2.3.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[15] prune_out_channels on _ElementWiseOp_17(AddBackward0) => prune_out_channels on resnet50.block2.3.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=512
+[16] prune_out_channels on _ElementWiseOp_17(AddBackward0) => prune_out_channels on _ElementWiseOp_16(ReluBackward0), len(idxs)=512
+[17] prune_out_channels on _ElementWiseOp_16(ReluBackward0) => prune_in_channels on resnet50.block3.0.shortcut.0 (Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[18] prune_out_channels on _ElementWiseOp_16(ReluBackward0) => prune_in_channels on resnet50.block3.0.conv1 (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[19] prune_out_channels on resnet50.block2.3.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block2.3.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[20] prune_out_channels on resnet50.block2.2.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block2.2.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[21] prune_out_channels on resnet50.block2.1.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block2.1.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+[22] prune_out_channels on resnet50.block2.0.bn3 (BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block2.0.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+--------------------------------
+
+
+############  GROUP 4  (root: resnet50.block1.0.shortcut.0, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block1.0.shortcut.0 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.0.shortcut.0 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block1.0.shortcut.0 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.0.shortcut.1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block1.0.shortcut.1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_30(AddBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_30(AddBackward0) => prune_out_channels on resnet50.block1.0.bn3 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[4] prune_out_channels on _ElementWiseOp_30(AddBackward0) => prune_out_channels on _ElementWiseOp_29(ReluBackward0), len(idxs)=256
+[5] prune_out_channels on _ElementWiseOp_29(ReluBackward0) => prune_out_channels on _ElementWiseOp_28(AddBackward0), len(idxs)=256
+[6] prune_out_channels on _ElementWiseOp_29(ReluBackward0) => prune_in_channels on resnet50.block1.1.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[7] prune_out_channels on _ElementWiseOp_28(AddBackward0) => prune_out_channels on resnet50.block1.1.bn3 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[8] prune_out_channels on _ElementWiseOp_28(AddBackward0) => prune_out_channels on _ElementWiseOp_27(ReluBackward0), len(idxs)=256
+[9] prune_out_channels on _ElementWiseOp_27(ReluBackward0) => prune_out_channels on _ElementWiseOp_26(MaxPool2DWithIndicesBackward0), len(idxs)=256
+[10] prune_out_channels on _ElementWiseOp_27(ReluBackward0) => prune_in_channels on resnet50.pool.0.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[11] prune_out_channels on _ElementWiseOp_26(MaxPool2DWithIndicesBackward0) => prune_out_channels on _ElementWiseOp_25(AddBackward0), len(idxs)=256
+[12] prune_out_channels on _ElementWiseOp_25(AddBackward0) => prune_out_channels on resnet50.pool.0.bn3 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[13] prune_out_channels on _ElementWiseOp_25(AddBackward0) => prune_out_channels on _ElementWiseOp_24(ReluBackward0), len(idxs)=256
+[14] prune_out_channels on _ElementWiseOp_24(ReluBackward0) => prune_in_channels on resnet50.block2.0.shortcut.0 (Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[15] prune_out_channels on _ElementWiseOp_24(ReluBackward0) => prune_in_channels on resnet50.block2.0.conv1 (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[16] prune_out_channels on resnet50.pool.0.bn3 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.pool.0.conv3 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[17] prune_out_channels on resnet50.block1.1.bn3 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block1.1.conv3 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[18] prune_out_channels on resnet50.block1.0.bn3 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on resnet50.block1.0.conv3 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 5  (root: resnet50.conv1, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.conv1 (Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)) => prune_out_channels on resnet50.conv1 (Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.conv1 (Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)) => prune_out_channels on resnet50.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_31(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_31(ReluBackward0) => prune_in_channels on resnet50.block1.0.shortcut.0 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_31(ReluBackward0) => prune_in_channels on resnet50.block1.0.conv1 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 6  (root: resnet50.block1.0.conv2, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block1.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.block1.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.0.bn2 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.block1.0.bn2 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_32(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_32(ReluBackward0) => prune_in_channels on resnet50.block1.0.conv3 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 7  (root: resnet50.block1.0.conv1, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block1.0.conv1 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.0.conv1 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.block1.0.conv1 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.0.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.block1.0.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_33(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_33(ReluBackward0) => prune_in_channels on resnet50.block1.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 8  (root: resnet50.block1.1.conv2, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block1.1.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.1.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.block1.1.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.1.bn2 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.block1.1.bn2 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_34(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_34(ReluBackward0) => prune_in_channels on resnet50.block1.1.conv3 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 9  (root: resnet50.block1.1.conv1, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block1.1.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.1.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.block1.1.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block1.1.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.block1.1.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_35(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_35(ReluBackward0) => prune_in_channels on resnet50.block1.1.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 10  (root: resnet50.pool.0.conv2, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.pool.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.pool.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.pool.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on resnet50.pool.0.bn2 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.pool.0.bn2 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_36(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_36(ReluBackward0) => prune_in_channels on resnet50.pool.0.conv3 (Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 11  (root: resnet50.pool.0.conv1, channels: 64)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.pool.0.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.pool.0.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on resnet50.pool.0.conv1 (Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.pool.0.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on resnet50.pool.0.bn1 (BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_37(ReluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_37(ReluBackward0) => prune_in_channels on resnet50.pool.0.conv2 (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+############  GROUP 12  (root: resnet50.block2.0.conv2, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.0.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.0.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.0.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.0.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.0.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_38(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_38(ReluBackward0) => prune_in_channels on resnet50.block2.0.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 13  (root: resnet50.block2.0.conv1, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.0.conv1 (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.0.conv1 (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.0.conv1 (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.0.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.0.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_39(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_39(ReluBackward0) => prune_in_channels on resnet50.block2.0.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 14  (root: resnet50.block2.1.conv2, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.1.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.1.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.1.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.1.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.1.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_40(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_40(ReluBackward0) => prune_in_channels on resnet50.block2.1.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 15  (root: resnet50.block2.1.conv1, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.1.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.1.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.1.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.1.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.1.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_41(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_41(ReluBackward0) => prune_in_channels on resnet50.block2.1.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 16  (root: resnet50.block2.2.conv2, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.2.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.2.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.2.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.2.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.2.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_42(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_42(ReluBackward0) => prune_in_channels on resnet50.block2.2.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 17  (root: resnet50.block2.2.conv1, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.2.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.2.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.2.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.2.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.2.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_43(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_43(ReluBackward0) => prune_in_channels on resnet50.block2.2.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 18  (root: resnet50.block2.3.conv2, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.3.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.3.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.3.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)) => prune_out_channels on resnet50.block2.3.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.3.bn2 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_44(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_44(ReluBackward0) => prune_in_channels on resnet50.block2.3.conv3 (Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 19  (root: resnet50.block2.3.conv1, channels: 128)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block2.3.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.3.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on resnet50.block2.3.conv1 (Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block2.3.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on resnet50.block2.3.bn1 (BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_45(ReluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_45(ReluBackward0) => prune_in_channels on resnet50.block2.3.conv2 (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2), bias=False)), len(idxs)=128
+--------------------------------
+
+
+############  GROUP 20  (root: resnet50.block3.0.conv2, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.0.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.0.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.0.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.0.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.0.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_46(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_46(ReluBackward0) => prune_in_channels on resnet50.block3.0.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 21  (root: resnet50.block3.0.conv1, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.0.conv1 (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.0.conv1 (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.0.conv1 (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.0.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.0.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_47(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_47(ReluBackward0) => prune_in_channels on resnet50.block3.0.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 22  (root: resnet50.block3.1.conv2, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.1.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.1.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.1.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.1.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.1.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_48(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_48(ReluBackward0) => prune_in_channels on resnet50.block3.1.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 23  (root: resnet50.block3.1.conv1, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.1.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.1.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.1.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.1.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.1.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_49(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_49(ReluBackward0) => prune_in_channels on resnet50.block3.1.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 24  (root: resnet50.block3.2.conv2, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.2.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.2.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.2.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.2.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.2.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_50(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_50(ReluBackward0) => prune_in_channels on resnet50.block3.2.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 25  (root: resnet50.block3.2.conv1, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.2.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.2.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.2.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.2.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.2.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_51(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_51(ReluBackward0) => prune_in_channels on resnet50.block3.2.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 26  (root: resnet50.block3.3.conv2, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.3.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.3.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.3.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.3.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.3.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_52(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_52(ReluBackward0) => prune_in_channels on resnet50.block3.3.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 27  (root: resnet50.block3.3.conv1, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.3.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.3.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.3.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.3.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.3.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_53(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_53(ReluBackward0) => prune_in_channels on resnet50.block3.3.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 28  (root: resnet50.block3.4.conv2, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.4.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.4.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.4.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.4.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.4.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_54(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_54(ReluBackward0) => prune_in_channels on resnet50.block3.4.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 29  (root: resnet50.block3.4.conv1, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.4.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.4.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.4.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.4.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.4.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_55(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_55(ReluBackward0) => prune_in_channels on resnet50.block3.4.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 30  (root: resnet50.block3.5.conv2, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.5.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.5.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.5.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)) => prune_out_channels on resnet50.block3.5.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.5.bn2 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_56(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_56(ReluBackward0) => prune_in_channels on resnet50.block3.5.conv3 (Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+############  GROUP 31  (root: resnet50.block3.5.conv1, channels: 256)  ############
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on resnet50.block3.5.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.5.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on resnet50.block3.5.conv1 (Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on resnet50.block3.5.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on resnet50.block3.5.bn1 (BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_57(ReluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_57(ReluBackward0) => prune_in_channels on resnet50.block3.5.conv2 (Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4), bias=False)), len(idxs)=256
+--------------------------------
+
