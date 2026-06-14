@@ -1,74 +1,29 @@
-# Comments must start the line — gitignore does NOT support trailing comments.
-
-# Python
+# Standard Python dev cruft
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-*.egg-info/
-.pytest_cache/
+*.log
 
-# IDE / OS
-.vscode/
+# Editor / OS
 .idea/
-*.swp
+.vscode/
 .DS_Store
 Thumbs.db
 
-# Claude Code state — do not publish
-.claude/
+# ── Model weight tracking policy ────────────────────────────────────────────
+# Fine-tuned checkpoints: training produces many per-epoch snapshots
+# (ft_*_0.pth, ft_*_1.pth, …), per-run loss/ npy curves, and occasional
+# stray baseline copies. The evaluation pipeline only loads the
+# best-on-RHD checkpoint per ratio. Ignore EVERYTHING under
+# checkpoints_finetuned/, then re-include just the *_rhdbest.pth file
+# in each ratio subdir.
+checkpoints_finetuned/**
+!checkpoints_finetuned/
+!checkpoints_finetuned/*/
+!checkpoints_finetuned/*/ft_*_rhdbest.pth
 
-# Env / secrets
-.env
-.env.*
-venv/
-env/
-.conda/
-
-# Model weights / checkpoints — too large and / or non-redistributable
-*.pth
-*.pt
-*.onnx
-*.tflite
-
-# MediaPipe hand_landmarker bundle (auto-downloaded by code)
-*.task
-
-# Pruning / fine-tune artifact trees
-checkpoints_finetuned/
-new_check_point/
-pruned_architectures/
-
-# Dataset caches — FreiHAND and RHD are research-license-only, do not redistribute
-datasets/data/
-datasets/*.pkl
-Old_training/datasets/data/
-.cache/
-
-# Calibration / quant intermediates (regenerable by re-running method2.py / method3.py)
-quant/calib_tensors.pt
-
-# Heavy per-frame eval arrays — keep summary.json, drop errors.npz
-*.npz
-
-# Legacy + backup eval result trees
-eval_results/
-eval_results_cpu_backup_imgnorm/
-
-# BBT webcam recordings — privacy and size
-BBT recordings/
-*.mp4
-*.avi
-*.mov
-
-# CSV recordings of game / inference (large, regenerable)
-results.csv
-*.log
-
-# Benchmark sweep outputs (regenerable from the scripts)
-benchmark_results/
-
-# Temp files
-tmp_*
-*.tmp
-*.bak
+# Baseline DetNet folder: track ONLY the epoch-71 checkpoint used as
+# the reference baseline throughout the thesis. Other epochs and the
+# unused SikNet / BMC checkpoints stay out of git.
+new_check_point/*.pth
+!new_check_point/ckp_detnet_71.pth
